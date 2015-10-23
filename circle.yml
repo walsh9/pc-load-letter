@@ -4,3 +4,10 @@ machine:
 general:
   artifacts:
     - "coverage" # simplecov coverage reports
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: pc-load-letter
+
