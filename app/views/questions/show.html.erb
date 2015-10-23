@@ -8,3 +8,5 @@
     <%= render partial: "questions/answer", collection: @question.rest_answers,
            as: :answer, locals: {css_class: "answer"} %>
 </section>
+
+<%= render partial: "answers/new", locals: {answer: @answer, question: @question} %>

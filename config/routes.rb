@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :questions, only: [:show, :new, :create]
+  resources :answers, only: [:create]
 
   get   '/login', :to => 'sessions#new', :as => :login
   get   '/logout', :to => 'sessions#destroy', :as => :logout

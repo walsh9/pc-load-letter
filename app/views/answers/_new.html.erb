@@ -1,0 +1,7 @@
+<h4> Your Answer </h4>
+
+<%= form_for answer, url: { :controller => "answers", :action => "create" } do |f| %>
+  <%= f.text_area :content, size: "70x10" %><br>
+  <%= f.hidden_field :question_id, :value => question.id %>
+  <%= f.submit "Post Your Answer" %>
+<% end %>
