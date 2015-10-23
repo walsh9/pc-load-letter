@@ -6,7 +6,7 @@ general:
     - "coverage" # simplecov coverage reports
 
 deployment:
-  staging:
+  production:
     branch: master
     heroku:
       appname: pc-load-letter
