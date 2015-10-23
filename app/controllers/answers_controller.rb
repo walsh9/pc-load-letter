@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(answer_params)
-    @answer.user = User.first # switch to current_user when auth is set up
+    @answer.user = current_user
     if @answer.save
       redirect_to question_path("#{params[:answer][:question_id]}")
     else
