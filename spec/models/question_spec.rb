@@ -10,7 +10,7 @@ RSpec.describe Question, type: :model do
   it { should belong_to(:user) }
 
   let(:question) { FactoryGirl.create(:question) }
-  let(:answer1) { FactorgyGirl.create(:answer, question: question) }
+  let(:answer1) { FactoryGirl.create(:answer, question: question) }
   let(:answer2) { FactoryGirl.create(:answer, question: question) }
   let(:answer3) { FactoryGirl.create(:answer) }
 

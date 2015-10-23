@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :questions, only: [:show, :create, :new] do
+  resources :questions, only: [:show, :create, :new, :update] do
     resources :comments, only: [:create]
   end
 

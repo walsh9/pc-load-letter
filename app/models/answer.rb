@@ -12,5 +12,4 @@ class Answer < ActiveRecord::Base
   def has_comments?
     !comments.empty?
   end
-
 end
