@@ -76,4 +76,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  OmniAuth.config.full_host = "https://pc-load-letter.herokuapp.com"
 end
