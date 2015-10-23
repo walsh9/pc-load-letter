@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
 
+gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
