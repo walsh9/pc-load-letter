@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
 
   validates :title, :content, :user, presence: true
 
-  def sorted_answers_with_users
-    answers.order(:created_at).includes(:user)
+  def rest_answers
+    answers.order(:created_at).where.not(id: best_answer_id).includes(:user)
   end
 end
