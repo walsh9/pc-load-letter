@@ -16,7 +16,7 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-girequire 'capybara/rspec'
+require 'capybara/rspec'
 require 'simplecov'
 SimpleCov.start 'rails'
 
