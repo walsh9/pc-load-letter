@@ -1,0 +1,21 @@
+<article class="question question-type-normal">
+  <h2>
+    <a href="/questions/<%= question.id %>"><%= question.title %></a>
+  </h2>
+  <div class="question-author">
+    <a href="/users/<%= question.user.id %>" class="question-author-img tooltip-n"><span></span><img alt="" src="<%= question.user.picture %>"></a>
+  </div>
+  <div class="question-inner">
+    <div class="clearfix"></div>
+    <p class="question-desc"><%= question.content.truncate(350, omission: '... (continued)') %></p>
+    <div class="question-details">
+      <% if question.solved? %>
+        <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>
+        <% end %>
+
+    </div>
+    <span class="question-date"><i class="icon-time"></i>Active <%= time_ago_in_words(question.updated_at) %> ago</span>
+    <span class="question-comment"><a href="#"><i class="icon-comment"></i><%= question.answers.count %> Answers</a></span>
+    <div class="clearfix"></div>
+  </div>
+</article>

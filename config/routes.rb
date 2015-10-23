@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'site#index'
+
   resources :questions, only: [:show, :new, :create]
   resources :answers, only: [:create]
 
