@@ -4,8 +4,14 @@
   <footer><%= "asked by #{@question.user.id} at #{@question.created_at}" %></footer>
 </article>
 <section class="answer-list">
-  <% @question.sorted_answers_with_users.each do |answer| %>
-    <article class="question">
+  <% if @question.best_answer %>
+    <article class="best answer">
+      <p><%= @question.best_answer.content %></p>
+      <footer><%= "answer from #{@question.best_answer.user.id} at #{@question.best_answer.created_at}" %></footer>
+    </article>
+  <% end %>
+  <% @question.rest_answers.each do |answer| %>
+    <article class="answer">
       <p><%= answer.content %></p>
       <footer><%= "answer from #{answer.user.id} at #{answer.created_at}" %></footer>
     </article>
