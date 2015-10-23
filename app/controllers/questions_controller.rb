@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.user = User.first # switch to current_user when auth is set up
+    @question.user = current_user
     if @question.save
        render 'show'
     else

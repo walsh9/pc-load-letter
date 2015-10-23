@@ -20,7 +20,14 @@ require 'capybara/rspec'
 require 'simplecov'
 SimpleCov.start 'rails'
 
+module AuthenticationHelpers
+  def stub_current_user user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+end
+
 RSpec.configure do |config|
+  config.include AuthenticationHelpers
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
