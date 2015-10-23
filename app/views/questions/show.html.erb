@@ -1,0 +1,13 @@
+<article class="question">
+  <header><%= @question.title %></header>
+  <p><%= @question.content %></p>
+  <footer><%= "asked by #{@question.user.id} at #{@question.created_at}" %></footer>
+</article>
+<section class="answer-list">
+  <% @question.sorted_answers_with_users.each do |answer| %>
+    <article class="question">
+      <p><%= answer.content %></p>
+      <footer><%= "answer from #{answer.user.id} at #{answer.created_at}" %></footer>
+    </article>
+  <% end %>
+</section>
