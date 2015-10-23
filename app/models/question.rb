@@ -8,4 +8,8 @@ class Question < ActiveRecord::Base
   def rest_answers
     answers.order(:created_at).where.not(id: best_answer_id).includes(:user)
   end
+
+  def solved?
+    best_answer != nil
+  end
 end
