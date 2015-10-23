@@ -20,6 +20,8 @@ describe QuestionsController do
     it "increases the count of all questions by 1" do
       question.save
       expect(question.save).to change { Question.count }.by(1)
+    it "doesn't create a question when params are invalid" do
+      expect{post :create, question: invalid_attributes}.not_to change{ Question.count }
     end
   end
 
