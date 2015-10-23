@@ -5,6 +5,8 @@ class Question < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   validates :title, :content, :user, presence: true
+  validates :best_answer, inclusion: { in: :answers, allow_nil: true, 
+    message: "is not a valid answer" }
 
 
 

@@ -10,8 +10,24 @@ RSpec.describe Question, type: :model do
   it { should belong_to(:user) }
 
   let(:question) { FactoryGirl.create(:question) }
-  let(:answer1) { FactoryGirl.create(:answer, question: question) }
+  let(:answer1) { FactorgyGirl.create(:answer, question: question) }
   let(:answer2) { FactoryGirl.create(:answer, question: question) }
+  let(:answer3) { FactoryGirl.create(:answer) }
+
+  describe "validate best_answer" do
+    it "should allow a valid best answer" do
+      question.best_answer = answer2
+      expect(question).to be_valid
+    end
+    it "should not allow an invalid best answer" do
+      question.best_answer = answer3
+      expect(question).not_to be_valid
+    end
+    it "should allow a nil best answer" do
+      question.best_answer = nil
+      expect(question).to be_valid
+    end
+  end
   describe "rest_answers" do
     it "should return the answers in chronological order" do
       expect(question.rest_answers).to eq([answer1, answer2])
