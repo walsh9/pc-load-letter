@@ -17,3 +17,4 @@ RSpec.describe Question, type: :model do
     end
   end
 end
+

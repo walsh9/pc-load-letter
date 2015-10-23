@@ -15,4 +15,12 @@ describe QuestionsController do
 
   end
 
+  describe "post create" do
+    let(:question) { FactoryGirl.build :question, :title => "Test Question", :content => "Do you know the answer?", :user => 1 }
+    it "increases the count of all questions by 1" do
+      question.save
+      expect(question.save).to change { Question.count }.by(1)
+    end
+  end
+
 end
