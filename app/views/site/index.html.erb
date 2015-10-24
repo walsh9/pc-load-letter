@@ -1,9 +1,16 @@
+
+
+
 <section class="container main-content">
 <div class="row">
 <div class="col-md-12">
 <div class="tabs-warp question-tab">
   <ul class="tabs">
-    <li class="tab"><a href="#" class="current">All Questions</a></li>
+    <li class="tab"><a href="?sort=trending" <%= 'class=current' if @sorting =="trending" || @sorting.nil? %>>Trending</a></li>
+    <li class="tab"><a href="?sort=recent" <%= 'class=current' if @sorting =="recent" %>>Recent activity</a></li>
+    <li class="tab"><a href="?sort=unanswered" <%= 'class=current' if @sorting =="unanswered" %>>Without answers</a></li>
+    <li class="tab"><a href="?sort=open" <%= 'class=current' if @sorting =="open" %>>Open</a></li>
+    <li class="tab"><a href="?sort=closed" <%= 'class=current' if @sorting =="closed" %>>Solved</a></li>
   </ul>
 </div>
 <%= render partial: 'questions/indexshow', collection: @questions, as: :question %>
