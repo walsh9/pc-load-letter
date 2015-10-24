@@ -1,0 +1,18 @@
+<header id="header" class="index-no-box">
+    <section class="container clearfix">
+      <div class="logo"><a href="index.html"><img alt="PC LOAD LETTER" src="/img/logo.png"></a></div>
+      <nav class="navigation">
+        <ul>
+          <li class="current_page_item"><a href="<%= root_url %>">Home</a></li>
+          <li><a href="<%= new_question_path %>">Ask Question</a></li>
+
+          <% if current_user %>
+            <li><a href="<%= logout_path %>">Logout</a></li>
+          <% else %>
+            <li><a href="<%= login_path %>">Login</a></li>
+          <% end %>
+
+        </ul>
+      </nav>
+    </section><!-- End container -->
+  </header>

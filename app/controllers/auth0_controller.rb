@@ -8,7 +8,7 @@ class Auth0Controller < ApplicationController
 
     session[:uid] = user.uid
 
-    render plain: "You are logged in as #{user.name} #{user.uid} #{user.id}"
+    redirect_to root_url
   end
 
   def failure
