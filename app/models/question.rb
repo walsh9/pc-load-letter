@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
   # getting answer count makes this n+1 right now. 
   # need to figure out how to eager load the answers
   def self.trending
-    Question.select("questions.id, questions.title, questions.user_id, questions.updated_at, count(answers.id) AS answers_count").
+    Question.select("questions.id, questions.title, questions.content, questions.user_id, questions.updated_at, count(answers.id) AS answers_count").
     includes(:user).
     joins(:answers).
     where(:"answers.updated_at" => (Time.now - 90.hours)..Time.now).
