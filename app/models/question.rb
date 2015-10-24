@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   belongs_to :best_answer, class_name: "Answer"
   has_many :answers
+  has_many :comments, as: :commentable
 
   validates :title, :content, :user, presence: true
 
@@ -25,7 +26,7 @@ class Question < ActiveRecord::Base
     where('best_answer_id IS NOT NULL').includes(:answers, :user).order(updated_at: :desc)
   end
 
-  # getting answer count makes this n+1 right now. 
+  # getting answer count makes this n+1 right now.
   # need to figure out how to eager load the answers
   def self.trending
     Question.select("questions.id, questions.title, questions.user_id, questions.updated_at, count(answers.id) AS answers_count").

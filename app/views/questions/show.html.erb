@@ -10,3 +10,7 @@
 </section>
 
 <%= render partial: "answers/new", locals: {answer: @answer, question: @question} %>
+
+<h2>Comments</h2>
+<%= render "comments/comments" %>
+<%= render "comments/form" %>

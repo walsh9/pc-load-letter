@@ -1,0 +1,18 @@
+<%= form_for [@commentable, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+  <div>
+    <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>
+  <%= f.text_area :content, size: "70x10" %>
+</div>
+<div>
+  <%= f.submit "Post a Comment" %>
+</div>
+<% end %>
