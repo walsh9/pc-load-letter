@@ -3,13 +3,14 @@
       <div class="logo"><a href="<%= root_url %>"><img alt="PC LOAD LETTER" src="/img/logo.png"></a></div>
       <nav class="navigation">
         <ul>
-          <li class="current_page_item"><a href="<%= root_url %>">Home</a></li>
-          <li><a href="<%= new_question_path %>">Ask Question</a></li>
+          <li <%= 'class=current_page_item' if current_page?(root_url) %>><a href="<%= root_url %>">Home</a></li>
+          
 
           <% if current_user %>
+            <li <%= 'class=current_page_item' if current_page?(new_question_path) %>><a href="<%= new_question_path %>">Ask Question</a></li>
             <li><a href="<%= logout_path %>">Logout</a></li>
           <% else %>
-            <li><a href="<%= login_path %>">Login</a></li>
+            <li <%= 'class=current_page_item' if current_page?(login_path) %>><a href="<%= login_path %>">Register/Login</a></li>
           <% end %>
 
         </ul>
