@@ -9,7 +9,7 @@
 def seed!
   # create users
   20.times do 
-    User.create()
+    User.create(name: Faker::Name.name, picture: Faker::Avatar.image(Faker::Number.number(10)))
   end
   users = User.all
 

@@ -1,16 +1,66 @@
-<article class="question">
-  <header><%= @question.title %></header>
-  <p><%= @question.content %></p>
-  <footer><%= "asked by #{@question.user.id} at #{@question.created_at}" %></footer>
-</article>
+<section class="container main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <article class="question single-question question-type-normal">
+          <h2>
+            <a href="single_question.html"><%= @question.title %></a>
+          </h2>
+          <div class="question-inner">
+            <div class="clearfix"></div>
+            <div class="question-desc">
+              <%= @question.content %>
+            </div>
+            <div class="question-details">
+              <% if @question.solved? %>
+                <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>
+              <% end %>
+            </div>
+            <span class="question-date"><i class="icon-time"></i>Active <%= time_ago_in_words(@question.updated_at) %> ago</span>
+            <span class="question-comment"><i class="icon-comment"></i><%= @question.answers.count %> Answers</span>
+            <div class="clearfix"></div>
+          </div>
+        </article>
+        
+        <div class="about-author clearfix">
+            <div class="author-image">
+                <a href="/users/<%= @question.user.id %>" class="question-author-img tooltip-n"><span></span><img alt="" src="<%= @question.user.picture %>"></a>
+            </div>
+            <div class="author-bio">
+                <h4>Posted by <%= @question.user.name %></h4>
+                Member for <%= time_ago_in_words(@question.user.created_at) %>
+            </div>
+        </div><!-- End about-author -->
+        
+        
+        <div id="commentlist" class="page-content">
+          <div class="boxedtitle page-title"><h2>Answers ( <span class="color"><%= @question.answers.size %></span> )</h2></div>
+          <ol class="commentlist clearfix">
+            <%= render partial: "questions/answer", locals: {answer: @question.best_answer, best_answer: true} if @question.best_answer %>
+            <%= render partial: "questions/answer", collection: @question.rest_answers,
+           as: :answer, locals: {best_answer: false} %>
+
+          </ol><!-- End commentlist -->
+        </div><!-- End page-comments -->
+        
+          <%= render partial: "answers/new", locals: {answer: @answer, question: @question} %>
+
+      </div><!-- End main -->
+      
+    </div><!-- End row -->
+  </section>
+
+
+
 <section class="answer-list">
-    <%= render partial: "questions/answer", locals: {answer: @question.best_answer, css_class: "best answer"} if @question.best_answer %>
-    <%= render partial: "questions/answer", collection: @question.rest_answers,
-           as: :answer, locals: {css_class: "answer"} %>
+
 </section>
+
 
 <%= render partial: "answers/new", locals: {answer: @answer, question: @question} %>
 
 <h2>Comments</h2>
 <%= render partial: "comments/comments" %>
 <%= render partial: "comments/form" %>
+
+
+

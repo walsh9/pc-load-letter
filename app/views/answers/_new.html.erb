@@ -1,7 +1,19 @@
-<h4> Your Answer </h4>
 
 <%= form_for answer, url: { :controller => "answers", :action => "create" } do |f| %>
-  <%= f.text_area :content, size: "70x10" %><br>
   <%= f.hidden_field :question_id, :value => question.id %>
-  <%= f.submit "Post Your Answer" %>
+  <div id="respond" class="comment-respond page-content clearfix">
+      <div class="boxedtitle page-title"><h2>Suggest an Answer</h2></div>
+      <form action="" method="post" id="commentform" class="comment-form">
+
+          <div id="respond-textarea">
+              <p>
+                  <label class="required" for="comment">Answer<span>*</span></label>
+                  <%= f.text_area :content, size: "58x8", id: "comment" %>
+              </p>
+          </div>
+          <p class="form-submit">
+            <input name="submit" type="submit" id="submit" value="Post your answer" class="button small color">
+          </p>
+      </form>
+  </div>
 <% end %>
