@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :user do
+    name Faker::Name.name 
+    picture Faker::Avatar.image(Faker::Number.number(10))
   end
 end
 

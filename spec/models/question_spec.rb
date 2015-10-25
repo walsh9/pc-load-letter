@@ -38,5 +38,24 @@ RSpec.describe Question, type: :model do
       expect(question.rest_answers).to eq([answer2])
     end
   end
+
+  describe "search" do
+      let!(:question) do
+        FactoryGirl.create(:question, 
+          {title: "Why does my ruby program crash?",
+           content: "here is the source 'while true; puts hello; end'."
+          }) 
+      end
+      it "finds by title" do
+        expect(Question.search("ruby").first).to eq(question)
+      end
+      it "finds by content" do
+        expect(Question.search("source").first).to eq(question)
+      end
+      it "returns empty when it has no results" do
+        expect(Question.search("java")).to be_empty
+      end
+
+  end
 end
 

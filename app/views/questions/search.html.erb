@@ -1,0 +1,14 @@
+<section class="container main-content">
+<div class="row">
+<div class="col-md-12">
+<div class="page-content search_results">
+  <% if @questions.empty? %>
+    <h2>No results found for '<%= "#{params[:q]}" %>'</h2>
+  <% else %>
+    <h2><%= "#{pluralize(@questions.size, 'result')} for '#{params[:q]}'" %></h2>
+    <%= render partial: 'questions/indexshow', collection: @questions, as: :question %>
+  <% end %>
+</div>
+</div>
+</div>
+</section>

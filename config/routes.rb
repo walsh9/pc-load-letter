@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:show, :create, :new] do
     resources :comments, only: [:create]
+    get 'search', on: :collection, as: :search
   end
 
   patch '/questions/:id' => 'questions#select_best_answer', :as => 'select_best_answer'

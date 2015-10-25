@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include PgSearch
+  
   belongs_to :user
   belongs_to :best_answer, class_name: "Answer"
   has_many :answers
@@ -8,8 +10,11 @@ class Question < ActiveRecord::Base
   validates :best_answer, inclusion: { in: :answers, allow_nil: true, 
     message: "is not a valid answer" }
 
-
-
+  multisearchable :against => [:title, :content]
+  pg_search_scope :search, :against => {title: 'A', content: 'B'},
+                  :using => {
+                    :tsearch => {:dictionary => "english"}
+                  }
 
   def self.open
     where('best_answer_id IS NULL').includes(:answers, :user).order(created_at: :desc)
