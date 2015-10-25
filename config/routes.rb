@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'site#index'
 
+  resources :users, only: [:show]
+
   resources :questions, only: [:show, :create, :new] do
     resources :comments, only: [:create]
   end
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   end
 
 
-
+  get   '/profile', :to => 'users#profile', :as => :profile
 
   get   '/login', :to => 'sessions#new', :as => :login
   get   '/logout', :to => 'sessions#destroy', :as => :logout
