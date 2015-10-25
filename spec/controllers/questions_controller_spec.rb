@@ -12,7 +12,6 @@ describe QuestionsController do
       get :show, {'id' => question.id}
       expect(response).to render_template("show")
     end
-
   end
 
   describe "post create" do
@@ -29,4 +28,16 @@ describe QuestionsController do
     end
   end
 
+  describe "patch select_best_answer" do
+    it "marks the answer as best answer" do
+      answer = FactoryGirl.create(:answer)
+      question = answer.question
+      expect{ patch :select_best_answer, {'id' => question.id, 'best_answer' => answer.id} }.to change{ question.reload.best_answer }.from(nil).to(answer)
+    end
+    it "doesn't mark an invalid answer as best answer" do
+      question = FactoryGirl.create(:question)
+      invalid_answer = FactoryGirl.create(:answer)
+      expect{ patch :select_best_answer, 'id' => question.id, 'best_answer' => invalid_answer.id }.not_to change{ question.reload.best_answer }
+    end
+  end
 end

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  patch '/questions/:id' => 'questions#select_best_answer', :as => 'select_best_answer'
+
   resources :answers, only: [:create] do
     resources :comments, only: [:create, :new]
   end

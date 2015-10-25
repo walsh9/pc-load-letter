@@ -13,4 +13,7 @@ class Answer < ActiveRecord::Base
     !comments.empty?
   end
 
+  def to_your_question?(user)
+    question.user == user
+  end
 end
