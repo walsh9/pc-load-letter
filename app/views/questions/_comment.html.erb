@@ -1,0 +1,21 @@
+    <li class="comment">
+    <div class="comment-body clearfix"> 
+      <div class="comment-text">
+        <div class="text"><p><%= comment.content %> </p>
+          </div>
+          <div class="author clearfix">
+            <div class="comment-vote">
+              <ul class="question-vote">
+                  <li><a href="#" class="question-vote-up" title="Like"></a></li>
+                  <li><a href="#" class="question-vote-down" title="Dislike"></a></li>
+                </ul>
+            </div>
+            <span class="question-vote-result">+1</span>
+            <div class="comment-meta">
+              <div class="date"><i class="icon-time"></i><%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.name %></div> 
+            </div>      
+          </div>
+                
+      </div>
+    </div>
+  </li>

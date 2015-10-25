@@ -16,7 +16,7 @@
               <div class="comment-meta">
                     <div class="date"><i class="icon-time"></i><%= time_ago_in_words(answer.created_at) %> ago</div> 
                 </div>
-                <a class="comment-reply" href="#"><i class="icon-reply"></i>Reply</a> 
+                <a class="comment-reply" href="<%= new_answer_comment_path(answer) %>"><i class="icon-reply"></i>Reply</a> 
             </div>
             <div class="text"><p><%= answer.content %></p>
             </div>
@@ -25,5 +25,7 @@
     <% end %>
   </div>
 </div>
-
+<ul class="children">
+  <%= render partial: "comment", collection: answer.comments, as: :comment %>
+</ul>
 </li>
