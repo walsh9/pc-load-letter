@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    name Faker::Name.name 
+    name Faker::Name.name
     picture Faker::Avatar.image(Faker::Number.number(10))
   end
 end
@@ -34,5 +34,19 @@ FactoryGirl.define do
     association :user, factory: :user
     content "Maybe you should look up #{Faker::Hacker.adjective} #{Faker::Hacker.noun}."
     association :commentable, factory: :answer
+  end
+end
+
+FactoryGirl.define do
+  factory :answer_vote, class: Vote do
+    association :user, factory: :user
+    association :voteable, factory: :answer
+  end
+end
+
+FactoryGirl.define do
+  factory :question_comment_vote, class: Vote do
+    association :user, factory: :user
+    association :voteable, factory: :question_comment
   end
 end

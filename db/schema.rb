@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025175708) do
+ActiveRecord::Schema.define(version: 20151025211722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,8 +69,20 @@ ActiveRecord::Schema.define(version: 20151025175708) do
     t.string   "picture",    default: "http://www.gravatar.com/avatar/?s=60&d=identicon"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "voteable_id"
+    t.string   "voteable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
+  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
+
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "votes", "users"
 end
