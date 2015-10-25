@@ -45,7 +45,7 @@
           </ol><!-- End commentlist -->
         </div><!-- End page-comments -->
         
-          <%= render partial: "answers/new", locals: {answer: @answer, question: @question} %>
+          <%= render partial: "answers/new", locals: {answer: @answer, question: @question} if current_user %>
 
       </div><!-- End main -->
       
