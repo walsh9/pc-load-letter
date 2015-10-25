@@ -40,4 +40,17 @@ describe QuestionsController do
       expect{ patch :select_best_answer, 'id' => question.id, 'best_answer' => invalid_answer.id }.not_to change{ question.reload.best_answer }
     end
   end
+
+  describe "get search" do
+    let(:user) { FactoryGirl.create :user }
+    it "renders the template when logged out" do
+      get :search, {'q' => "ruby"}
+      expect(response).to render_template(:search)
+    end
+    it "renders the template when logged in" do
+      stub_current_user(user)
+      get :search, {'q' => "javascript"}
+      expect(response).to render_template(:search)
+    end
+  end
 end

@@ -106,6 +106,10 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.18.3)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -211,6 +215,7 @@ DEPENDENCIES
   omniauth (~> 1.2)
   omniauth-auth0 (~> 1.1)
   pg
+  pg_search
   pry-rails
   rails (= 4.2.4)
   rails_12factor

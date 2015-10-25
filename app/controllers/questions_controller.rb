@@ -38,6 +38,10 @@ class QuestionsController < UserActionsController
     end
   end
 
+  def search
+    @questions = Question.search(params[:q])
+  end
+
   private
 
   def question_params
