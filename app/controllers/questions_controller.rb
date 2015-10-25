@@ -16,8 +16,9 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user = current_user
     if @question.save
-       render 'show'
+       redirect_to question_path(@question)
     else
+      @errors = @question.errors.full_messages
       render 'new'
     end
   end
