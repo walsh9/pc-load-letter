@@ -18,3 +18,19 @@ FactoryGirl.define do
     association :question, factory: :question
   end
 end
+
+FactoryGirl.define do
+  factory :question_comment, class: Comment do
+    association :user, factory: :user
+    content "Maybe you should look up #{Faker::Hacker.adjective} #{Faker::Hacker.noun}."
+    association :commentable, factory: :question
+  end
+end
+
+FactoryGirl.define do
+  factory :answer_comment, class: Comment do
+    association :user, factory: :user
+    content "Maybe you should look up #{Faker::Hacker.adjective} #{Faker::Hacker.noun}."
+    association :commentable, factory: :answer
+  end
+end

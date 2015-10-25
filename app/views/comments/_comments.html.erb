@@ -1,0 +1,6 @@
+<div>
+  <% @comments.each do |comment| %>
+    <p><%= comment.content %></p>
+    <footer><%= "answer from #{comment.user_id} at #{comment.created_at}" %></footer>
+  <% end %>
+</div>
