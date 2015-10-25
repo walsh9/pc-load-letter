@@ -37,6 +37,10 @@ class Question < ActiveRecord::Base
     order("answers_count DESC")
   end
 
+  def comments_and_rest_answers
+    (rest_answers + comments).sort_by(&:created_at).reverse
+  end
+
   def rest_answers
     answers.order(:created_at).where.not(id: best_answer_id).includes(:user)
   end
