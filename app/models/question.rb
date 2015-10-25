@@ -48,4 +48,8 @@ class Question < ActiveRecord::Base
   def solved?
     best_answer != nil
   end
+
+  def to_param
+    [id, title.parameterize].join("-")
+  end
 end
