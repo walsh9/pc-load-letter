@@ -2,11 +2,10 @@ class QuestionsController < UserActionsController
 
   before_action :user_is_owner?, only: [:update]
 
-  def update
-    question = Question.find(params[:id])
+  def select_best_answer
+      question = Question.find(params[:id])
       puts 'before save'
-      p question.best_answer
-    question.best_answer = Answer.find(params[:best_answer])
+      question.best_answer = Answer.find(params[:best_answer])
     if question.save
       puts 'after save'
       p question.best_answer

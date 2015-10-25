@@ -25,8 +25,15 @@
             </div>
             <div class="text"><p><%= answer.content %></p>
             
-            <% if current_user == @question.user %>
-            <a  href="#"><i class="icon-ok"></i>Select as best answer</a>
+            <% if answer.to_your_question?(current_user) and not @question.solved?  %>
+              <%= button_to select_best_answer_path(@question),
+                 { 
+                   method: :patch,
+                   params: {'best_answer' => answer.id},
+                   class: 'button'
+                 } do %>
+                  <i class="icon-ok"></i> Select as best answer 
+              <% end %>
             <% end %>
 
             </div>

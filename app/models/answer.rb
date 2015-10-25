@@ -12,4 +12,8 @@ class Answer < ActiveRecord::Base
   def has_comments?
     !comments.empty?
   end
+
+  def to_your_question?(user)
+    question.user == user
+  end
 end
