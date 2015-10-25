@@ -5,7 +5,7 @@ class UserActionsController < ApplicationController
   private
 
   def logged_in?
-    unless session[:uid].present?
+    unless current_user
       # Redirect to page that has the login here
       redirect_to login_path
     end
