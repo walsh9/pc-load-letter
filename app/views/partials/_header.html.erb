@@ -7,6 +7,7 @@
           
 
           <% if current_user %>
+            <li <%= 'class=current_page_item' if current_page?(profile_path) %>><a href="<%= profile_path %>">Profile</a></li>
             <li <%= 'class=current_page_item' if current_page?(new_question_path) %>><a href="<%= new_question_path %>">Ask Question</a></li>
             <li><a href="<%= logout_path %>">Logout</a></li>
           <% else %>

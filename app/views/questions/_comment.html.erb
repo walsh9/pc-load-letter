@@ -12,7 +12,7 @@
             </div>
             <span class="question-vote-result">+1</span>
             <div class="comment-meta">
-              <div class="date"><i class="icon-time"></i><%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.name %></div> 
+              <div class="date"><i class="icon-time"></i><%= time_ago_in_words(comment.created_at) %> ago by <a href="<%= user_path(comment.user) %>"><%= comment.user.name %></a></div> 
             </div>      
           </div>
                 
