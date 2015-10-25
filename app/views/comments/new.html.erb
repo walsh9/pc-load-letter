@@ -1,3 +1,39 @@
-<h1>Add your comment to the PC Load Letter conversation</h1>
 
-<%= render 'form' %>
+
+
+
+<%= form_for  [@commentable, @comment] do |f| %>
+
+<section class="container main-content">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <div class="page-content ask-question">
+          <div class="boxedtitle page-title"><h2>Post a comment</h2></div>
+          
+          <p>Replying to: <%= @commentable.content %></p>
+
+          <%= error_helper %>
+          
+          <div class="form-style form-style-3" id="question-submit">
+            <form>
+              <div id="form-textarea">
+                <p>
+                  <label class="required">Your comment<span>*</span></label>
+                  <%= f.text_area :content, id: 'question-details', size: "58x8" %>
+                  <span class="form-description">Please be civil .</span>
+                </p>
+              </div>
+              <p class="form-submit">
+                <input type="submit" name="commit" id="publish-question" value="Post your comment" class="button color small submit">
+              </p>
+            </form>
+          </div>
+        </div><!-- End page-content -->
+      </div><!-- End main -->
+      
+    </div><!-- End row -->
+  </section>
+
+<% end %>
+

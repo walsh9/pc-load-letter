@@ -26,6 +26,15 @@ def seed!
     end
   end
 
+  20.times do
+    Question.all.sample.comments << Comment.create(user: User.all.sample, content: Faker::Hacker.say_something_smart)
+  end
+
+  20.times do
+    Answer.all.sample.comments << Comment.create(user: User.all.sample, content: Faker::Hacker.say_something_smart)
+  end
+
+
   unanswered_questions = Question.where('best_answer_id IS NULL')
   # mark best answer for half of the questions
   unanswered_questions.sample(unanswered_questions.count / 2).each do |question|

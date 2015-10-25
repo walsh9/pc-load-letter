@@ -1,11 +1,15 @@
 class CommentsController < ApplicationController
   before_filter :load_commentable
 
+  def new
+    @comment = @commentable.comments.build
+  end
+
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to @commentable
+      redirect_to question_path(@commentable.question)
     else
       render :new
     end
