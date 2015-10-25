@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class QuestionsController < UserActionsController
 
   def show
     @question = Question.find(params[:id])

@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < UserActionsController
   before_filter :load_commentable
 
   def new

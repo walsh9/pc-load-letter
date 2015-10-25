@@ -1,4 +1,4 @@
-class AnswersController < ApplicationController
+class AnswersController < UserActionsController
 
   def create
     @answer = Answer.new(answer_params)

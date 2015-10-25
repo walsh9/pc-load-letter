@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   root 'site#index'
 
-  resources :questions, only: [:show, :new, :create] do
+  resources :questions, only: [:show, :create, :new] do
     resources :comments, only: [:create]
   end
 
   resources :answers, only: [:create] do
     resources :comments, only: [:create, :new]
   end
+
+
+
 
   get   '/login', :to => 'sessions#new', :as => :login
   get   '/logout', :to => 'sessions#destroy', :as => :logout
