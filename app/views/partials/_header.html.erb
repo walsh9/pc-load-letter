@@ -3,10 +3,17 @@
       <div class="logo"><a href="<%= root_url %>"><img alt="PC LOAD LETTER" src="/img/logo.png"></a></div>
       <nav class="navigation">
         <ul>
+          <li class="header-search">
+            <%= form_tag(search_questions_path, method: "get", enforce_utf8: false) do %>
+              <%= text_field_tag(:q, "", placeholder: "Search") %>
+              <%= button_tag "", name: nil, type: "submit", class: "search-submit", id: "search-button" %>
+            <% end %>
+          </li>
           <li <%= 'class=current_page_item' if current_page?(root_url) %>><a href="<%= root_url %>">Home</a></li>
           
 
           <% if current_user %>
+            <li <%= 'class=current_page_item' if current_page?(profile_path) %>><a href="<%= profile_path %>">Profile</a></li>
             <li <%= 'class=current_page_item' if current_page?(new_question_path) %>><a href="<%= new_question_path %>">Ask Question</a></li>
             <li><a href="<%= logout_path %>">Logout</a></li>
           <% else %>

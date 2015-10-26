@@ -9,7 +9,11 @@ class CommentsController < UserActionsController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to question_path(@commentable.question)
+      if @commentable.class == Answer
+        redirect_to question_path(@commentable.question)
+      else
+        redirect_to question_path(@commentable)
+      end
     else
       render :new
     end

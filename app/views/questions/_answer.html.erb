@@ -1,11 +1,12 @@
-
 <li class="comment">
 
-    <div class="comment-body comment-body-answered clearfix"> 
+    <div class="comment-body comment-body-answered clearfix">
         <div class="avatar"><img alt="" src="<%= answer.user.picture %>"></div>
         <div class="comment-text">
             <div class="author clearfix">
-              <div class="comment-author"><a href="#"><%= answer.user.name %></a></div>
+              <div class="comment-author">
+              <a href="<%= user_path(answer.user) %>"><%= answer.user.name %></a>
+                            </div>
               <div class="comment-vote">
                 <ul class="question-vote">
                   <li><a href="#" class="question-vote-up" title="Like"></a></li>
@@ -14,13 +15,27 @@
               </div>
               <span class="question-vote-result">+1</span>
               <div class="comment-meta">
-                    <div class="date"><i class="icon-time"></i><%= time_ago_in_words(answer.created_at) %> ago</div> 
+                    <div class="date"><i class="icon-time"></i><%= time_ago_in_words(answer.created_at) %> ago</div>
                 </div>
+
                 <% if current_user %>
-                <a class="comment-reply" href="<%= new_answer_comment_path(answer) %>"><i class="icon-reply"></i>Reply</a> 
+                <a class="comment-reply" href="<%= new_answer_comment_path(answer) %>"><i class="icon-reply"></i>Reply</a>
+
                 <% end %>
             </div>
             <div class="text"><p><%= answer.content %></p>
+
+            <% if answer.to_your_question?(current_user) and not @question.solved?  %>
+              <%= button_to select_best_answer_path(@question),
+                 {
+                   method: :patch,
+                   params: {'best_answer' => answer.id},
+                   class: 'button'
+                 } do %>
+                  <i class="icon-ok"></i> Select as best answer
+              <% end %>
+            <% end %>
+
             </div>
     <% if best_answer %>
     <div class="question-answered question-answered-done"><i class="icon-ok"></i>Best Answer</div>

@@ -3,7 +3,7 @@
     <a href="<%= question_path(question) %>"><%= question.title %></a>
   </h2>
   <div class="question-author">
-    <a href="/users/<%= question.user.id %>" class="question-author-img tooltip-n"><span></span><img alt="" src="<%= question.user.picture %>"></a>
+    <a href="<%= user_path(question.user) %>" class="question-author-img tooltip-n"><span></span><img alt="" src="<%= question.user.picture %>"></a>
   </div>
   <div class="question-inner">
     <div class="clearfix"></div>
@@ -15,7 +15,7 @@
 
     </div>
     <span class="question-date"><i class="icon-time"></i>Active <%= time_ago_in_words(question.updated_at) %> ago</span>
-    <span class="question-comment"><a href="#"><i class="icon-comment"></i><%= question.answers.count %> Answers</a></span>
+    <span class="question-comment"><a href="<%= question_path(question) %>"><i class="icon-comment"></i><%= question.answers.size %> Answers</a></span>
     <div class="clearfix"></div>
   </div>
 </article>

@@ -1,0 +1,44 @@
+<section class="container main-content">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row">
+          <div class="user-profile">
+            <div class="col-md-12">
+              <div class="page-content">
+                <h2>About <%= @user.name %></h2>
+                <div class="user-profile-img"><img width="60" height="60" src="<%= @user.picture %>" alt="<%= @user.name %>"></div>
+                <div class="ul_list ul_list-icon-ok about-user">
+                  <ul>
+                    <li><i class="icon-plus"></i>Member since <span><%= time_ago_in_words(@user.created_at) %></span></li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+                
+              </div><!-- End page-content -->
+            </div><!-- End col-md-12 -->
+
+          </div><!-- End user-profile -->
+        </div><!-- End row -->
+
+        <div id="col-md-9">
+          <%= render partial: 'questions/indexshow', collection: @user.questions, as: :question %>
+        </div>
+
+      </div><!-- End main -->
+      <aside class="col-md-3 sidebar">
+        <div class="widget widget_stats">
+          <h3 class="widget_title">Stats</h3>
+          <div class="ul_list ul_list-icon-ok">
+            <ul>
+              <li><i class="icon-question-sign"></i>Questions ( <span><%= @user.questions.size %></span> )</li>
+              <li><i class="icon-star"></i>Answers ( <span><%= @user.answers.size %></span> )</li>
+              <li><i class="icon-comment"></i>Comments ( <span><%= @user.comments.size %></span> )</li>
+              <li><i class="icon-asterisk"></i>Best Answers ( <span>?</span> )</li>
+            </ul>
+          </div>
+        </div>
+        
+        
+      </aside><!-- End sidebar -->
+    </div><!-- End row -->
+  </section>
