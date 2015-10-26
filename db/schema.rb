@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025211722) do
+ActiveRecord::Schema.define(version: 20151025224709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20151025211722) do
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
     t.integer  "user_id"
-    t.text     "content",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "content",        null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "comments_count"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(version: 20151025211722) do
     t.text     "content",        null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "answers_count"
+    t.integer  "comments_count"
   end
 
   add_index "questions", ["best_answer_id"], name: "index_questions_on_best_answer_id", using: :btree

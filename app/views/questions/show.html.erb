@@ -16,7 +16,7 @@
               <% end %>
             </div>
             <span class="question-date"><i class="icon-time"></i>Active <%= time_ago_in_words(@question.updated_at) %> ago</span>
-            <span class="question-comment"><i class="icon-comment"></i><%= @question.answers.count %> Answers</span>
+            <span class="question-comment"><i class="icon-comment"></i><%= @question.answers.size %> Answers</span>
             <div class="clearfix"></div>
           </div>
         </article>
