@@ -4,13 +4,12 @@ class QuestionsController < UserActionsController
 
   def select_best_answer
       question = Question.find(params[:id])
-      puts 'before save'
       question.best_answer = Answer.find(params[:best_answer])
     if question.save
-      puts 'after save'
-      p question.best_answer
+      question.best_answer.touch
       redirect_to question_path(question)
     else
+      @errors = @question.errors.full_messages 
       redirect_to question_path(question)
     end
   end

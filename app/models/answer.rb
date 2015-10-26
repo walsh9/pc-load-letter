@@ -7,7 +7,7 @@ class Answer < ActiveRecord::Base
   validates :content, :user, :question, presence: true
 
   def sorted_comments
-    comments.order(:created_at).reverse
+    comments.order(created_at: :desc)
   end
 
   def has_comments?
