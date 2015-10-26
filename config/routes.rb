@@ -4,13 +4,16 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :questions, only: [:show, :create, :new] do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      resources :votes, only: [:create]
+    end
     get 'search', on: :collection, as: :search
   end
 
   patch '/questions/:id' => 'questions#select_best_answer', :as => 'select_best_answer'
 
   resources :answers, only: [:create] do
+    resources :votes, only: [:create]
     resources :comments, only: [:create, :new]
   end
 

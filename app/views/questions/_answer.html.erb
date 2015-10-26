@@ -1,6 +1,6 @@
 <li class="comment">
 
-    <div class="comment-body comment-body-answered clearfix"> 
+    <div class="comment-body comment-body-answered clearfix">
         <div class="avatar"><img alt="" src="<%= answer.user.picture %>"></div>
         <div class="comment-text">
             <div class="author clearfix">
@@ -15,24 +15,24 @@
               </div>
               <span class="question-vote-result">+1</span>
               <div class="comment-meta">
-                    <div class="date"><i class="icon-time"></i><%= time_ago_in_words(answer.created_at) %> ago</div> 
+                    <div class="date"><i class="icon-time"></i><%= time_ago_in_words(answer.created_at) %> ago</div>
                 </div>
-                
+
                 <% if current_user %>
-                <a class="comment-reply" href="<%= new_answer_comment_path(answer) %>"><i class="icon-reply"></i>Reply</a> 
+                <a class="comment-reply" href="<%= new_answer_comment_path(answer) %>"><i class="icon-reply"></i>Reply</a>
 
                 <% end %>
             </div>
             <div class="text"><p><%= answer.content %></p>
-            
+
             <% if answer.to_your_question?(current_user) and not @question.solved?  %>
               <%= button_to select_best_answer_path(@question),
-                 { 
+                 {
                    method: :patch,
                    params: {'best_answer' => answer.id},
                    class: 'button'
                  } do %>
-                  <i class="icon-ok"></i> Select as best answer 
+                  <i class="icon-ok"></i> Select as best answer
               <% end %>
             <% end %>
 
