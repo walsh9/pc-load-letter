@@ -9,7 +9,6 @@ class QuestionsController < UserActionsController
       question.best_answer.touch
       redirect_to question_path(question)
     else
-      @errors = @question.errors.full_messages 
       redirect_to question_path(question)
     end
   end
